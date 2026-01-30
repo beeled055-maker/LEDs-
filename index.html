@@ -607,6 +607,266 @@
             opacity: 0;
             transform: translateY(20px);
         }
+
+        .visit {
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .visit-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .visit-header h1 {
+            font-size: 36px;
+            font-weight: 700;
+        }
+
+        .view-more {
+            font-weight: 600;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .visit-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            position: relative;
+            border-radius: 18px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.08);
+        }
+
+        .overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.15));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 20px;
+            color: #fff;
+        }
+
+        .overlay h2 {
+            font-size: 22px;
+            margin-top: 8px;
+        }
+
+        .icon {
+            font-size: 26px;
+        }
+
+
+        /* ================= CAROUSEL DE PALAVRAS (HERO) ================= */
+
+        .word-carousel {
+            position: relative;
+            height: 1.2em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .word {
+            position: absolute;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity .8s ease, transform .8s ease;
+            white-space: nowrap;
+        }
+
+        .word.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ================= TÍTULO COM ABELHA VOANDO EM CIMA ================= */
+
+        .titulo-com-abelha {
+            position: relative;
+            display: inline-block;
+            padding-top: 50px;
+            /* espaço pra abelha */
+        }
+
+        .titulo-planos {
+            font-weight: 900;
+            font-size: 3rem;
+            color: #ffcc00;
+        }
+
+        /* ABELHA */
+        .abelha-voando {
+            position: absolute;
+            top: 0;
+            left: -60px;
+            font-size: 1.8rem;
+            animation: vooAbelhaTopo 6s linear infinite;
+        }
+
+        /* ANIMAÇÃO */
+        @keyframes vooAbelhaTopo {
+            0% {
+                transform: translateX(-60px) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateX(180px) rotate(10deg);
+            }
+
+            90% {
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateX(320px) rotate(0deg);
+                opacity: 0;
+            }
+        }
+
+        /* MOBILE */
+        @media(max-width:768px) {
+            .titulo-planos {
+                font-size: 2.2rem;
+            }
+
+            .abelha-voando {
+                font-size: 1.4rem;
+                animation-duration: 5s;
+            }
+        }
+
+        /* ================= SCROLL INDICATOR PROFISSIONAL MAIOR ================= */
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 50px;
+            /* um pouco mais alto da base */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            /* maior largura */
+            height: 80px;
+            /* maior altura */
+            border: 3px solid rgba(255, 255, 255, 0.8);
+            border-radius: 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            padding-top: 10px;
+            transition: border-color .3s;
+            z-index: 3;
+        }
+
+        .scroll-indicator:hover {
+            border-color: #ffcc00;
+        }
+
+        .scroll-indicator span {
+            width: 6px;
+            /* maior bolinha */
+            height: 12px;
+            /* maior bolinha */
+            background: #ffcc00;
+            border-radius: 6px;
+            animation: scrollWheel 1.6s infinite;
+        }
+
+        @keyframes scrollWheel {
+            0% {
+                opacity: 0;
+                transform: translateY(0);
+            }
+
+            40% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(24px);
+                /* deslocamento maior para acompanhar tamanho */
+            }
+        }
+
+        .carousel-container {
+            width: 95%;
+            max-width: 1400px;
+            background: #00000000;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0);
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #ffffff;
+            font-size: 2rem;
+        }
+
+        .carousel {
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .carousel-track {
+            display: flex;
+            gap: 5px;
+            animation: scroll 25s linear infinite;
+        }
+
+        .carousel img {
+            width: 400px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            flex-shrink: 0;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .carousel img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Animação contínua do carrossel */
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
     </style>
 </head>
 
@@ -650,7 +910,8 @@
                             <a class="nav-link" href="#palavrasCarousel">Diferenciais</a>
                         </li>
                         <li class="nav-item">
-                             <a class="btn btn-warning ms-lg-3" href="https://wa.me/5546984031616?text=Gostaria%20de%20saber%20mais%20sobre%20o%20beeLed...%F0%9F%90%9D">Contato</a>
+                            <a class="btn btn-warning ms-lg-3"
+                                href="https://wa.me/5546984031616?text=Gostaria%20de%20saber%20mais%20sobre%20o%20beeLed...%F0%9F%90%9D">Contato</a>
                         </li>
                     </ul>
                 </div>
@@ -667,28 +928,32 @@
         </video>
 
         <div class="hero-content">
-            <h3 class="hero-title">BeeSquare</h3>
-
-            <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
-                <h1 class="beeled-title">
-                    Bee<span class="L">L</span><span class="E">E</span><span class="D">D</span>
-                </h1>
-
-                <img src="ChatGPT Image 1 de dez. de 2025, 19_46_53-Photoroom.png" class="hero-logo">
+            <div class="word-carousel">
+                <h1 class="beeled-title word active">BeeLed</h1>
+                <h1 class="beeled-title word">Inovação</h1>
+                <h1 class="beeled-title word">Visibilidade</h1>
+                <h1 class="beeled-title word">Impacto</h1>
+                <h1 class="beeled-title word">Publicidade</h1>
             </div>
         </div>
 
-        <div class="scroll-arrow" onclick="scrollToSection()">▼</div>
-
+        <div class="scroll-indicator" onclick="scrollToSection()">
+            <span></span>
+        </div>
     </section>
+
+
     <!-- PLANOS -->
     <section class="planos" id="planos">
         <div class="container">
 
-            <h2 class="text-center mb-5" style="font-weight:900; font-size:3rem; color:#ffcc00;">
-                Planos de Divulgação
-            </h2>
+            <div class="titulo-com-abelha text-center mb-5">
+                <div class="abelha-voando">🐝</div>
 
+                <h2 class="titulo-planos">
+                    Planos de Divulgação
+                </h2>
+            </div>
             <div class="row g-4 justify-content-center">
 
                 <!-- PLANO SEMANAL -->
@@ -763,39 +1028,16 @@
         </div>
     </section>
 
-    <!-- FRASE + CAROUSEL -->
-    <div class="palavras-carousel-container text-center">
 
-        <h3 class="frase-topo">Sua marca merece estar onde todos olham.</h3>
-
-        <div id="palavrasCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="2000">
-
-            <div class="carousel-inner">
-
-                <div class="carousel-item active">
-                    <h3 class="palavra animate-palavra">Inovação</h3>
-                </div>
-
-                <div class="carousel-item">
-                    <h3 class="palavra animate-palavra">Visibilidade</h3>
-                </div>
-
-                <div class="carousel-item">
-                    <h3 class="palavra animate-palavra">Impacto</h3>
-                </div>
-
-                <div class="carousel-item">
-                    <h3 class="palavra animate-palavra">Publicidade</h3>
-                </div>
-
-            </div>
-        </div>
-    </div>
 
     <!-- BENEFÍCIOS -->
     <section class="beneficios">
         <div class="container">
             <div class="row align-items-center g-5">
+                <div class="col-lg-6 text-center">
+                    <img src="Captura de tela 2025-12-01 203305.png" class="img-fluid rounded-4 shadow-lg"
+                        style="width: 100%; max-height: 600px; object-fit: cover;">
+                </div>
 
                 <div class="col-lg-6">
                     <div class="beneficios-box">
@@ -832,167 +1074,225 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6 text-center">
-                    <img src="Captura de tela 2025-12-01 203305.png" class="img-fluid rounded-4 shadow-lg"
-                        style="width: 100%; max-height: 600px; object-fit: cover;">
-                </div>
 
-            </div>
-        </div>
-    </section>
 
-    <!-- QUEM SOMOS -->
-    <section class="quem-somos" id="quem-somos">
+                <!-- QUEM SOMOS -->
+                <section class="quem-somos" id="quem-somos">
 
-        <div class="container">
-            <h1 style="font-size: 3.5rem; font-weight: 900; margin-bottom: 40px;">Quem Somos</h1>
+                    <div class="container">
+                        <h1 style="font-size: 3.5rem; font-weight: 900; margin-bottom: 40px;">Quem Somos</h1>
 
-            <div class="row align-items-center justify-content-center g-5">
+                        <div class="row align-items-center justify-content-center g-5">
 
-                <div class="col-lg-6 text-center">
-                    <img src="Captura de tela 2025-12-01 200519.png" class="img-fluid rounded-4 shadow-lg"
-                        style="max-height: 650px; object-fit: cover;">
-                </div>
+                            <div class="col-lg-6 text-center">
+                                <img src="Captura de tela 2025-12-01 200519.png" class="img-fluid rounded-4 shadow-lg"
+                                    style="max-height: 650px; object-fit: cover;">
+                            </div>
 
-                <div class="col-lg-5">
-                    <ul style="list-style: none; margin: 0; padding: 0;">
-                        <li class="qs-item"><span class="qs-icon">→</span> Painel de LED em Local Estratégico</li>
-                        <li class="qs-item"><span class="qs-icon">→</span> +2.800 Veículos por Dia</li>
-                        <li class="qs-item"><span class="qs-icon">→</span> 18h Exibição Diária</li>
-                        <li class="qs-item"><span class="qs-icon">→</span> 27 Inserções por Dia</li>
-                        <li class="qs-item"><span class="qs-icon">→</span> Criação de Arte Inclusa</li>
-                    </ul>
-                </div>
+                            <div class="col-lg-5">
+                                <ul style="list-style: none; margin: 0; padding: 0;">
+                                    <li class="qs-item"><span class="qs-icon">→</span> Painel de LED em Local
+                                        Estratégico</li>
+                                    <li class="qs-item"><span class="qs-icon">→</span> +2.800 Veículos por Dia</li>
+                                    <li class="qs-item"><span class="qs-icon">→</span> 18h Exibição Diária</li>
+                                    <li class="qs-item"><span class="qs-icon">→</span> 27 Inserções por Dia</li>
+                                    <li class="qs-item"><span class="qs-icon">→</span> Criação de Arte Inclusa</li>
+                                </ul>
+                            </div>
 
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER PROFISSIONAL -->
-    <footer class="footer">
-        <div class="container">
-
-            <div class="row gy-5">
-
-                <!-- LOGO + DESCRIÇÃO -->
-                <div class="col-lg-4">
-                    <div class="footer-brand d-flex align-items-center mb-3">
-                        <img src="ChatGPT Image 1 de dez. de 2025, 19_46_53-Photoroom.png" alt="BeeLED Logo">
-                        <h4>BeeLED</h4>
+                        </div>
                     </div>
-
-                    <p class="footer-text">
-                        Soluções em publicidade digital com painéis de LED de alta visibilidade.
-                        Sua marca no ponto certo, no momento certo.
-                    </p>
-                </div>
-
-                <!-- LINKS RÁPIDOS -->
-                <div class="col-lg-2 col-md-4">
-                    <h5 class="footer-title">Navegação</h5>
-                    <ul class="footer-links">
-                        <li><a href="#quem-somos">Quem Somos</a></li>
-                        <li><a href="#planos">Planos</a></li>
-                        <li><a href="#beneficios">Diferenciais</a></li>
-                        <li><a href="#contato">Contato</a></li>
-                    </ul>
-                </div>
-
-                <!-- SERVIÇOS -->
-                <div class="col-lg-3 col-md-4">
-                    <h5 class="footer-title">Serviços</h5>
-                    <ul class="footer-links">
-                        <li>Publicidade em Painel LED</li>
-                        <li>Criação de Artes</li>
-                        <li>Campanhas Promocionais</li>
-                        <li>Divulgação Estratégica</li>
-                    </ul>
-                </div>
-
-                <!-- CONTATO -->
-                <div class="col-lg-3 col-md-4">
-                    <h5 class="footer-title">Contato</h5>
-
-                    <ul class="footer-contact">
-                        <li>
-                            <i class="bi bi-whatsapp"></i>
-                            <a href="https://w.app/a1pmhd" target="_blank">(46) 98403-1616</a>
-                        </li>
-                        <li>
-                            <i class="bi bi-envelope"></i>
-                            comercialbeeled@gmail.com
-                        </li>
-                        <li>
-                            <i class="bi bi-geo-alt"></i>
-                            outdoorbeeled
-                        </li>
-                    </ul>
-
-                    <!-- REDES SOCIAIS -->
-                    <div class="footer-social">
-                        <a href="https://www.instagram.com/outdoorbeeled?igsh=MWN6YjBndGZ4MXYyZw=="><i class="bi bi-instagram"></i></a>
-                        <a href="#"><i class="bi bi-facebook"></i></a>
-                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                </section>
+                <div class="carousel-container">
+                    <h2
+                        style="text-align:center; color:#ffc60c; font-size:19px; letter-spacing:2px; text-transform:uppercase;margin-top: 2%; margin-bottom:30px; font-weight:700;">
+                        Parcerias Já Feitas
+                    </h2>
+                    <div class="carousel">
+                        <div class="carousel-track">
+                            <img src="benedita.png" alt="Parceiro 1">
+                            <img src="3.png" alt="Parceiro 2">
+                            <img src="jj.png" alt="Parceiro 3">
+                            <img src="maestra.png" alt="Parceiro 4">
+                            <img src="uniao.png" alt="Parceiro 5">
+                            <!-- Repetimos as imagens para criar efeito de loop contínuo -->
+                            <img src="benedita.png" alt="Parceiro 1">
+                            <img src="3.png" alt="Parceiro 2">
+                            <img src="jj.png" alt="Parceiro 3">
+                            <img src="maestra.png" alt="Parceiro 4">
+                            <img src="uniao.png" alt="Parceiro 5">
+                        </div>
                     </div>
                 </div>
 
-            </div>
+                <script>
+                    const track = document.querySelector('.carousel-track');
+                    const prevButton = document.querySelector('.carousel-button.prev');
+                    const nextButton = document.querySelector('.carousel-button.next');
+                    const images = document.querySelectorAll('.carousel img');
 
-            <!-- LINHA FINAL -->
-            <div class="footer-bottom">
-                <span>© 2025 BeeLED. Todos os direitos reservados.</span>
-                <span>Desenvolvido com tecnologia e impacto visual.</span>
-            </div>
+                    let currentIndex = 0;
+                    const imageWidth = images[0].offsetWidth + 5; // largura + margin
 
-        </div>
-    </footer>
+                    function updateCarousel() {
+                        track.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
+                    }
+
+                    nextButton.addEventListener('click', () => {
+                        if (currentIndex < images.length - 1) {
+                            currentIndex++;
+                        } else {
+                            currentIndex = 0; // volta pro início
+                        }
+                        updateCarousel();
+                    });
+
+                    prevButton.addEventListener('click', () => {
+                        if (currentIndex > 0) {
+                            currentIndex--;
+                        } else {
+                            currentIndex = images.length - 1; // vai pro final
+                        }
+                        updateCarousel();
+                    });
+                </script>
+
+                <!-- FOOTER PROFISSIONAL -->
+                <footer class="footer">
+                    <div class="container">
+
+                        <div class="row gy-5">
+
+                            <!-- LOGO + DESCRIÇÃO -->
+                            <div class="col-lg-4">
+                                <div class="footer-brand d-flex align-items-center mb-3">
+                                    <img src="ChatGPT Image 1 de dez. de 2025, 19_46_53-Photoroom.png"
+                                        alt="BeeLED Logo">
+                                    <h4>BeeLED</h4>
+                                </div>
+
+                                <p class="footer-text">
+                                    Soluções em publicidade digital com painéis de LED de alta visibilidade.
+                                    Sua marca no ponto certo, no momento certo.
+                                </p>
+                            </div>
+
+                            <!-- LINKS RÁPIDOS -->
+                            <div class="col-lg-2 col-md-4">
+                                <h5 class="footer-title">Navegação</h5>
+                                <ul class="footer-links">
+                                    <li><a href="#quem-somos">Quem Somos</a></li>
+                                    <li><a href="#planos">Planos</a></li>
+                                    <li><a href="#beneficios">Diferenciais</a></li>
+                                    <li><a href="#contato">Contato</a></li>
+                                </ul>
+                            </div>
+
+                            <!-- SERVIÇOS -->
+                            <div class="col-lg-3 col-md-4">
+                                <h5 class="footer-title">Serviços</h5>
+                                <ul class="footer-links">
+                                    <li>Publicidade em Painel LED</li>
+                                    <li>Criação de Artes</li>
+                                    <li>Campanhas Promocionais</li>
+                                    <li>Divulgação Estratégica</li>
+                                </ul>
+                            </div>
+
+                            <!-- CONTATO -->
+                            <div class="col-lg-3 col-md-4">
+                                <h5 class="footer-title">Contato</h5>
+
+                                <ul class="footer-contact">
+                                    <li>
+                                        <i class="bi bi-whatsapp"></i>
+                                        <a href="https://w.app/a1pmhd" target="_blank">(46) 98403-1616</a>
+                                    </li>
+                                    <li>
+                                        <i class="bi bi-envelope"></i>
+                                        comercialbeeled@gmail.com
+                                    </li>
+                                    <li>
+                                        <i class="bi bi-geo-alt"></i>
+                                        outdoorbeeled
+                                    </li>
+                                </ul>
+
+                                <!-- REDES SOCIAIS -->
+                                <div class="footer-social">
+                                    <a href="https://www.instagram.com/outdoorbeeled?igsh=MWN6YjBndGZ4MXYyZw=="><i
+                                            class="bi bi-instagram"></i></a>
+                                    <a href="#"><i class="bi bi-facebook"></i></a>
+                                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- LINHA FINAL -->
+                        <div class="footer-bottom">
+                            <span>© 2025 BeeLED. Todos os direitos reservados.</span>
+                            <span>Desenvolvido com tecnologia e impacto visual.</span>
+                        </div>
+
+                    </div>
+                </footer>
+                <script>
+                    const words = document.querySelectorAll(".word");
+                    let currentWord = 0;
+
+                    setInterval(() => {
+                        words[currentWord].classList.remove("active");
+                        currentWord = (currentWord + 1) % words.length;
+                        words[currentWord].classList.add("active");
+                    }, 2500);
+                </script>
 
 
-    <script defer>
-        function scrollToSection() {
-            document.querySelector("#planos").scrollIntoView({ behavior: "smooth" });
-        }
-    </script>
-    <script defer>
-        // Mudar navbar ao rolar
-        const navbar = document.querySelector('.navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+                <script defer>
+                    function scrollToSection() {
+                        document.querySelector("#planos").scrollIntoView({ behavior: "smooth" });
+                    }
+                </script>
+                <script defer>
+                    // Mudar navbar ao rolar
+                    const navbar = document.querySelector('.navbar');
+                    window.addEventListener('scroll', () => {
+                        if (window.scrollY > 50) {
+                            navbar.classList.add('scrolled');
+                        } else {
+                            navbar.classList.remove('scrolled');
+                        }
+                    });
 
-        // Scroll suave para links do header
-        document.querySelectorAll('.navbar a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
-    <script>
-        document.body.classList.add("loading");
+                    // Scroll suave para links do header
+                    document.querySelectorAll('.navbar a[href^="#"]').forEach(anchor => {
+                        anchor.addEventListener('click', function (e) {
+                            e.preventDefault();
+                            const target = document.querySelector(this.getAttribute('href'));
+                            if (target) {
+                                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            }
+                        });
+                    });
+                </script>
+                <script>
+                    document.body.classList.add("loading");
 
-        window.addEventListener("load", () => {
-            const loader = document.getElementById("site-loader");
-            if (!loader) return;
+                    window.addEventListener("load", () => {
+                        const loader = document.getElementById("site-loader");
+                        if (!loader) return;
 
-            setTimeout(() => {
-                loader.classList.add("hidden");
-                document.body.classList.remove("loading");
-                document.body.classList.add("loaded");
-            }, 900); // rápido e elegante
-        });
-    </script>
+                        setTimeout(() => {
+                            loader.classList.add("hidden");
+                            document.body.classList.remove("loading");
+                            document.body.classList.add("loaded");
+                        }, 900); // rápido e elegante
+                    });
+                </script>
 
 
 
 </body>
-
 
 </html>
