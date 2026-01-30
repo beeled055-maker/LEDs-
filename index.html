@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeeLED - Publicidade</title>
+
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Ícones + Fontes -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;600;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ================= HERO ================= */
+        /* ================= HERO ================= */
+        .hero {
+            height: 100vh;
+            /* tamanho normal no computador */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            text-align: center;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .hero video {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.35) contrast(1.2);
+        }
+
+        /* DIMINUI A ALTURA DO VÍDEO NO CELULAR */
+        @media (max-width: 768px) {
+            .hero {
+                height: 40vh !important;
+                /* antes 55vh */
+            }
+
+            .hero video {
+                height: 40vh !important;
+                object-fit: cover;
+            }
+
+            .hero-title {
+                font-size: 1.9rem !important;
+            }
+
+            .beeled-title {
+                font-size: 3rem !important;
+            }
+
+            .hero-logo {
+                width: 120px !important;
+            }
+        }
+
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+        }
+
+        .hero-title {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(3rem, 7vw, 9rem);
+            text-shadow: 0 0 25px #000;
+        }
+
+        .beeled-title {
+            font-size: clamp(2.5rem, 6vw, 8rem);
+            font-weight: 900;
+            text-shadow: 0 0 30px #000;
+        }
+
+        .L {
+            color: #ff3b3b;
+        }
+
+        .E {
+            color: #1fc742;
+        }
+
+        .D {
+            color: #3c7bff;
+        }
+
+        .hero-logo {
+            max-width: 220px;
+            width: 30vw;
+        }
+
+        .scroll-arrow {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            cursor: pointer;
+            animation: bounce 1.6s infinite;
+            z-index: 3;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(12px);
+            }
+        }
+
+        /* ================= QUEM SOMOS ================= */
+        .quem-somos {
+            padding: 120px 20px;
+            background: linear-gradient(180deg, #050505, #222222);
+        }
+
+        .qs-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 18px 0;
+            font-size: 1.6rem;
+            font-weight: 700;
+            justify-content: center;
+        }
+
+        .qs-icon {
+            font-size: 2rem;
+            opacity: 0.6;
+            transition: 0.2s;
+        }
+
+        .qs-item:hover .qs-icon {
+            opacity: 1;
+            transform: translateX(6px);
+        }
+
+        /* ================= FRASE + CAROUSEL ================= */
+        .palavras-carousel-container {
+            background: linear-gradient(180deg, #1a1a1a, #0f0f0f);
+            padding: 90px 20px;
+        }
+
+
+        .frase-topo {
+            font-size: 50px;
+            font-weight: 700;
+            color: #ffcc00;
+            margin-bottom: 25px;
+            text-shadow: 0 0 12px #000;
+        }
+
+        .palavra {
+            font-family: 'Anton', sans-serif;
+            font-size: clamp(2rem, 6vw, 4rem);
+            color: #ffffff;
+            text-shadow: 0 0 20px #000;
+            opacity: 0;
+        }
+
+        /* Fade suave */
+        .carousel-fade .carousel-item {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .carousel-fade .carousel-item.active {
+            opacity: 1;
+        }
+
+        /* Animação palavras */
+        @keyframes palavraSlide {
+            0% {
+                transform: translateY(25px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .animate-palavra {
+            animation: palavraSlide 1s ease forwards;
+        }
+
+        /* ================= BENEFÍCIOS ================= */
+        .beneficios {
+            padding: 100px 20px;
+            background: radial-gradient(circle at top, #020210, #020210 60%, #020210);
+        }
+
+        .beneficios-box {
+            background: linear-gradient(135deg, #0c0c0c, #080808);
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.6);
+        }
+
+        .beneficio-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .beneficio-item:last-child {
+            border-bottom: none;
+        }
+
+        /* ================= RESPONSIVIDADE EXTRA ================= */
+        @media (max-width: 992px) {
+            .qs-item {
+                font-size: 1.3rem;
+            }
+        }
+
+        /* ================= HEADER PROFISSIONAL ================= */
+        .navbar {
+            background-color: transparent;
+            /* transparente inicialmente */
+            padding: 0.7rem 1rem;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            z-index: 1000;
+        }
+
+        .navbar.scrolled {
+            background-color: rgba(0, 0, 0, 0.95);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar-brand .logo {
+            height: 45px;
+            margin-right: 10px;
+        }
+
+        .navbar-brand .brand-text {
+            color: #ffcc00;
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+
+        .navbar-nav .nav-link {
+            color: #ffffff;
+            font-weight: 600;
+            margin-left: 15px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: #ffcc00;
+            transform: translateY(-2px);
+        }
+
+        .navbar-nav .btn {
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .navbar-nav .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 204, 0, 0.4);
+        }
+
+        /* Ajustes mobile */
+        @media (max-width: 768px) {
+            .navbar-brand .logo {
+                height: 35px;
+            }
+
+            .navbar-brand .brand-text {
+                font-size: 1.2rem;
+            }
+
+            .navbar-nav .nav-link {
+                margin-left: 0;
+                margin-bottom: 0.5rem;
+                font-size: 1rem;
+            }
+
+            .navbar-nav .btn {
+                width: 100%;
+                text-align: center;
+                margin-top: 0.5rem;
+            }
+        }
+
+        /* ================= PLANOS ================= */
+        .planos {
+            padding: 120px 20px;
+            background: radial-gradient(circle at top, #0b1a2f, #040b14);
+        }
+
+        .plano-card {
+            background: linear-gradient(135deg, #0c0c0c, #070707);
+            border-radius: 28px;
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 35px rgba(0, 0, 0, 0.6);
+            transition: transform .3s ease, box-shadow .3s ease;
+            height: 100%;
+        }
+
+        .plano-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 55px rgba(255, 204, 0, 0.25);
+        }
+
+        .plano-card h3 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+
+        .plano-card .tempo {
+            color: #ffcc00;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .plano-card ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 25px;
+        }
+
+        .plano-card ul li {
+            padding: 8px 0;
+            font-size: 1.05rem;
+            opacity: 0.9;
+        }
+
+        .plano-card .preco {
+            display: block;
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #ffcc00;
+        }
+
+        .plano-principal {
+            border: 2px solid #ffcc00;
+            transform: scale(1.03);
+        }
+
+        .badge-plano {
+            background: #ffcc00;
+            color: #000;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 800;
+            position: absolute;
+            margin-top: -60px;
+        }
+
+        /* ================= FOOTER ================= */
+        .footer {
+            background: linear-gradient(180deg, #000, #050505);
+            padding: 80px 20px 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .footer-brand img {
+            height: 45px;
+            margin-right: 12px;
+        }
+
+        .footer-brand h4 {
+            font-weight: 900;
+            color: #ffcc00;
+            margin: 0;
+        }
+
+        .footer-text {
+            opacity: 0.85;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        .footer-title {
+            font-weight: 800;
+            margin-bottom: 18px;
+            color: #ffffff;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+            opacity: 0.85;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: white;
+            transition: color 0.3s, padding-left 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ffcc00;
+            padding-left: 6px;
+        }
+
+        .footer-contact {
+            list-style: none;
+            padding: 0;
+            font-size: 0.95rem;
+        }
+
+        .footer-contact li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            opacity: 0.85;
+        }
+
+        .footer-contact i {
+            color: #ffcc00;
+            font-size: 1.2rem;
+        }
+
+        .footer-contact a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .footer-social {
+            margin-top: 20px;
+        }
+
+        .footer-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            margin-right: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.08);
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background: #ffcc00;
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            opacity: 0.75;
+        }
+
+        /* MOBILE */
+        @media (max-width: 768px) {
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+            }
+        }
+
+        /* ================= DIFERENCIAIS ================= */
+        .diferenciais {
+            padding: 120px 20px;
+            background: radial-gradient(circle at top, #2a0d4a, #120018);
+        }
+
+        .diferenciais h2 {
+            font-weight: 900;
+            font-size: 3rem;
+        }
+
+        .diferenciais h2 span {
+            color: #ffcc00;
+        }
+
+        .dif-card {
+            background: linear-gradient(135deg, #0c0c0c, #070707);
+            border-radius: 26px;
+            padding: 35px 28px;
+            height: 100%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: transform .3s ease, box-shadow .3s ease;
+        }
+
+        .dif-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 0 35px rgba(255, 204, 0, 0.25);
+        }
+
+        .dif-card i {
+            font-size: 2.5rem;
+            color: #ffcc00;
+            margin-bottom: 15px;
+        }
+
+        .dif-card h4 {
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .dif-card p {
+            opacity: 0.85;
+            font-size: 0.95rem;
+        }
+
+        /* ================= LOADER PROFISSIONAL ================= */
+        #site-loader {
+            position: fixed;
+            inset: 0;
+            background: #0b0b0b;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        #site-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+            opacity: 0;
+            animation: fadeUp 0.8s ease forwards;
+        }
+
+        .loader-content img {
+            width: 90px;
+            margin-bottom: 12px;
+        }
+
+        .loader-content h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        /* Animação limpa */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ================= ENTRADA DO SITE ================= */
+        body.loading main,
+        body.loading section,
+        body.loading footer {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+    </style>
+</head>
+
+<body>
+    <!-- LOADING / ENTRADA -->
+    <div id="site-loader">
+        <div class="loader-content">
+            <img src="ChatGPT Image 1 de dez. de 2025, 19_46_53-Photoroom.png" alt="BeeLED">
+            <h1>
+                Bee<span class="L">L</span><span class="E">E</span><span class="D">D</span>
+            </h1>
+        </div>
+    </div>
+
+    <!-- HEADER PROFISSIONAL -->
+    <header>
+        <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
+            <div class="container">
+                <!-- Logo -->
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <img src="ChatGPT Image 1 de dez. de 2025, 19_46_53-Photoroom.png" alt="BeeLED Logo" class="logo">
+                    <span class="brand-text">BeeLED</span>
+                </a>
+
+                <!-- Hamburger menu -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Links -->
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto align-items-lg-center">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#quem-somos">Quem Somos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#planos">Serviços</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#palavrasCarousel">Diferenciais</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="https://wa.me/5546984031616?text=Gostaria%20de%20saber%20mais%20sobre%20o%20beeLed...%F0%9F%90%9D" href="https://w.app/a1pmhd">Contato</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+    <!-- HERO -->
+    <section class="hero">
+        <video autoplay muted loop playsinline>
+            <source src="video1.mp4" type="video/mp4">
+        </video>
+
+        <div class="hero-content">
+            <h3 class="hero-title">BeeSquare</h3>
+
+            <div class="d-flex flex-wrap justify-content-center align-items-center gap-4">
+                <h1 class="beeled-title">
+                    Bee<span class="L">L</span><span class="E">E</span><span class="D">D</span>
+                </h1>
+
+                <img src="ChatGPT Image 1 de dez. de 2025, 19_46_53-Photoroom.png" class="hero-logo">
+            </div>
+        </div>
+
+        <div class="scroll-arrow" onclick="scrollToSection()">▼</div>
+
+    </section>
+    <!-- PLANOS -->
+    <section class="planos" id="planos">
+        <div class="container">
+
+            <h2 class="text-center mb-5" style="font-weight:900; font-size:3rem; color:#ffcc00;">
+                Planos de Divulgação
+            </h2>
+
+            <div class="row g-4 justify-content-center">
+
+                <!-- PLANO SEMANAL -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="plano-card destaque">
+                        <h3>Plano Semanal</h3>
+                        <p class="tempo">7 dias de exibição</p>
+
+                        <ul>
+                            <li>✔ 27 inserções por dia</li>
+                            <li>✔ 18h de exibição diária</li>
+                            <li>✔ Criação de arte inclusa</li>
+                            <li>✔ Alta visibilidade</li>
+                        </ul>
+
+                        <span class="preco">R$</span>
+
+                        <a href="https://wa.me/5500000000000?text=Olá!%20Tenho%20interesse%20no%20Plano%20Semanal%20da%20BeeLED."
+                            target="_blank" class="btn btn-warning w-100 mt-3">
+                            Contratar pelo WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PLANO MENSAL -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="plano-card plano-principal">
+                        <span class="badge-plano">Mais Vendido</span>
+
+                        <h3>Plano Mensal</h3>
+                        <p class="tempo">30 dias de exibição</p>
+
+                        <ul>
+                            <li>✔ 27 inserções por dia</li>
+                            <li>✔ 18h de exibição diária</li>
+                            <li>✔ Criação de arte inclusa</li>
+                            <li>✔ Melhor custo-benefício</li>
+                        </ul>
+
+                        <span class="preco">R$</span>
+
+                        <a href="https://wa.me/5500000000000?text=Olá!%20Quero%20contratar%20o%20Plano%20Mensal%20da%20BeeLED."
+                            target="_blank" class="btn btn-warning w-100 mt-3">
+                            Contratar pelo WhatsApp
+                        </a>
+                    </div>
+                </div>
+
+                <!-- PLANO FLEXÍVEL -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="plano-card">
+                        <h3>Plano Flexível</h3>
+                        <p class="tempo">Tempo personalizado</p>
+
+                        <ul>
+                            <li>✔ Escolha dias ou meses</li>
+                            <li>✔ Inserções ajustáveis</li>
+                            <li>✔ Arte personalizada</li>
+                            <li>✔ Ideal para campanhas</li>
+                        </ul>
+
+                        <span class="preco">Sob Consulta</span>
+
+                        <a href="https://wa.me/5500000000000?text=Olá!%20Quero%20um%20plano%20flexível%20da%20BeeLED."
+                            target="_blank" class="btn btn-warning w-100 mt-3">
+                            Falar com um consultor
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FRASE + CAROUSEL -->
+    <div class="palavras-carousel-container text-center">
+
+        <h3 class="frase-topo">Sua marca merece estar onde todos olham.</h3>
+
+        <div id="palavrasCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="2000">
+
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                    <h3 class="palavra animate-palavra">Inovação</h3>
+                </div>
+
+                <div class="carousel-item">
+                    <h3 class="palavra animate-palavra">Visibilidade</h3>
+                </div>
+
+                <div class="carousel-item">
+                    <h3 class="palavra animate-palavra">Impacto</h3>
+                </div>
+
+                <div class="carousel-item">
+                    <h3 class="palavra animate-palavra">Publicidade</h3>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- BENEFÍCIOS -->
+    <section class="beneficios">
+        <div class="container">
+            <div class="row align-items-center g-5">
+
+                <div class="col-lg-6">
+                    <div class="beneficios-box">
+
+                        <h2 style="font-weight: 900; font-size: 2.6rem;" class="mb-4">Diferenciais</h2>
+
+                        <ul class="list-unstyled">
+                            <li class="beneficio-item">
+                                <i class="bi bi-check-circle-fill" style="color:#ffdd40; font-size:1.6rem;"></i>
+                                Alta visibilidade: +2.800 veículos/dia
+                            </li>
+
+                            <li class="beneficio-item">
+                                <i class="bi bi-check-circle-fill" style="color:#ffdd40; font-size:1.6rem;"></i>
+                                18h de exibição contínua
+                            </li>
+
+                            <li class="beneficio-item">
+                                <i class="bi bi-check-circle-fill" style="color:#ffdd40; font-size:1.6rem;"></i>
+                                Mínimo 27 inserções por anunciante
+                            </li>
+
+                            <li class="beneficio-item">
+                                <i class="bi bi-check-circle-fill" style="color:#ffdd40; font-size:1.6rem;"></i>
+                                Painel LED moderno e de alta definição
+                            </li>
+
+                            <li class="beneficio-item">
+                                <i class="bi bi-check-circle-fill" style="color:#ffdd40; font-size:1.6rem;"></i>
+                                Planos flexíveis + criação de artes
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="col-lg-6 text-center">
+                    <img src="Captura de tela 2025-12-01 203305.png" class="img-fluid rounded-4 shadow-lg"
+                        style="width: 100%; max-height: 600px; object-fit: cover;">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- QUEM SOMOS -->
+    <section class="quem-somos" id="quem-somos">
+
+        <div class="container">
+            <h1 style="font-size: 3.5rem; font-weight: 900; margin-bottom: 40px;">Quem Somos</h1>
+
+            <div class="row align-items-center justify-content-center g-5">
+
+                <div class="col-lg-6 text-center">
+                    <img src="Captura de tela 2025-12-01 200519.png" class="img-fluid rounded-4 shadow-lg"
+                        style="max-height: 650px; object-fit: cover;">
+                </div>
+
+                <div class="col-lg-5">
+                    <ul style="list-style: none; margin: 0; padding: 0;">
+                        <li class="qs-item"><span class="qs-icon">→</span> Painel de LED em Local Estratégico</li>
+                        <li class="qs-item"><span class="qs-icon">→</span> +2.800 Veículos por Dia</li>
+                        <li class="qs-item"><span class="qs-icon">→</span> 18h Exibição Diária</li>
+                        <li class="qs-item"><span class="qs-icon">→</span> 27 Inserções por Dia</li>
+                        <li class="qs-item"><span class="qs-icon">→</span> Criação de Arte Inclusa</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER PROFISSIONAL -->
+    <footer class="footer">
+        <div class="container">
+
+            <div class="row gy-5">
+
+                <!-- LOGO + DESCRIÇÃO -->
+                <div class="col-lg-4">
+                    <div class="footer-brand d-flex align-items-center mb-3">
+                        <img src="ChatGPT Image 1 de dez. de 2025, 19_46_53-Photoroom.png" alt="BeeLED Logo">
+                        <h4>BeeLED</h4>
+                    </div>
+
+                    <p class="footer-text">
+                        Soluções em publicidade digital com painéis de LED de alta visibilidade.
+                        Sua marca no ponto certo, no momento certo.
+                    </p>
+                </div>
+
+                <!-- LINKS RÁPIDOS -->
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="footer-title">Navegação</h5>
+                    <ul class="footer-links">
+                        <li><a href="#quem-somos">Quem Somos</a></li>
+                        <li><a href="#planos">Planos</a></li>
+                        <li><a href="#beneficios">Diferenciais</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
+                </div>
+
+                <!-- SERVIÇOS -->
+                <div class="col-lg-3 col-md-4">
+                    <h5 class="footer-title">Serviços</h5>
+                    <ul class="footer-links">
+                        <li>Publicidade em Painel LED</li>
+                        <li>Criação de Artes</li>
+                        <li>Campanhas Promocionais</li>
+                        <li>Divulgação Estratégica</li>
+                    </ul>
+                </div>
+
+                <!-- CONTATO -->
+                <div class="col-lg-3 col-md-4">
+                    <h5 class="footer-title">Contato</h5>
+
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="bi bi-whatsapp"></i>
+                            <a href="https://w.app/a1pmhd" target="_blank">(46) 98403-1616</a>
+                        </li>
+                        <li>
+                            <i class="bi bi-envelope"></i>
+                            comercialbeeled@gmail.com
+                        </li>
+                        <li>
+                            <i class="bi bi-geo-alt"></i>
+                            outdoorbeeled
+                        </li>
+                    </ul>
+
+                    <!-- REDES SOCIAIS -->
+                    <div class="footer-social">
+                        <a href="https://www.instagram.com/outdoorbeeled?igsh=MWN6YjBndGZ4MXYyZw=="><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-linkedin"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- LINHA FINAL -->
+            <div class="footer-bottom">
+                <span>© 2025 BeeLED. Todos os direitos reservados.</span>
+                <span>Desenvolvido com tecnologia e impacto visual.</span>
+            </div>
+
+        </div>
+    </footer>
+
+
+    <script defer>
+        function scrollToSection() {
+            document.querySelector("#planos").scrollIntoView({ behavior: "smooth" });
+        }
+    </script>
+    <script defer>
+        // Mudar navbar ao rolar
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll suave para links do header
+        document.querySelectorAll('.navbar a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+    <script>
+        document.body.classList.add("loading");
+
+        window.addEventListener("load", () => {
+            const loader = document.getElementById("site-loader");
+            if (!loader) return;
+
+            setTimeout(() => {
+                loader.classList.add("hidden");
+                document.body.classList.remove("loading");
+                document.body.classList.add("loaded");
+            }, 900); // rápido e elegante
+        });
+    </script>
+
+
+
+</body>
+
+</html>
